@@ -28,6 +28,7 @@ namespace ShortUrl
         {
             services.AddControllers();
             services.AddDbContext<UrlContext>(options => options.UseMySQL(Configuration.GetConnectionString("SqlConnection")));
+            services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

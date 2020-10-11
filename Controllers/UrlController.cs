@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Org.BouncyCastle.Math.EC;
 using ShortUrl.DataAccess;
 using ShortUrl.Entities;
 
@@ -11,8 +13,13 @@ namespace ShortUrl.Controllers
 {
     [Route("/")]
     [ApiController]
-    public class UrlController : ControllerBase
+    public class UrlController: ControllerBase
     {
+        private IConfiguration Configuration;
+        public UrlController(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
         [HttpGet("{shorten}")]
         public void Get(string shorten, [FromServices] UrlContext dbContext)
         {
@@ -21,7 +28,7 @@ namespace ShortUrl.Controllers
                           select urls.longUrl;
             if (longUrl.Count() == 0)
             {
-                Response.Redirect("/");
+                Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"]);
             }
             else
             {
@@ -50,7 +57,7 @@ namespace ShortUrl.Controllers
                     code = 201,
                     data = new
                     {
-                        shortUrl = newUrls.shortUrl,
+                        shortUrl = $"{Configuration.GetSection("SiteSettings")["prefix"]}/{newUrls.shortUrl}",
                         revokePwd = newUrls.revokePassword
                     }
                 });
@@ -66,6 +73,47 @@ namespace ShortUrl.Controllers
                 });
             }
 
+        }
+
+        [HttpDelete("{shorten}")]
+        public async Task<IActionResult> Delete(string shorten,[FromQuery] string revokePwd, [FromServices] UrlContext dbContext)
+        {
+            var query = from urls in dbContext.Urls
+                          where urls.shortUrl == shorten
+                          select urls;
+            if (query.Count() == 0)
+            {
+                Response.StatusCode = 204;
+                return new JsonResult(new
+                {
+                    code = 204,
+                    msg = "Deleted"
+                });
+            }
+            else
+            {
+                var target = query.Single();
+                if (target.revokePassword == revokePwd)
+                {
+                    dbContext.Urls.Remove(target);
+                    await dbContext.SaveChangesAsync();
+                    Response.StatusCode = 204;
+                    return new JsonResult(new
+                    {
+                        code = 204,
+                        msg = "Deleted"
+                    }) ;
+                }
+                else
+                {
+                    Response.StatusCode = 401;
+                    return new JsonResult(new
+                    {
+                        code = 401,
+                        msg = "Invaild Revoke password"
+                    });
+                }
+            }
         }
     }
 }
