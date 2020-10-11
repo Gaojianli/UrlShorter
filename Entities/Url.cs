@@ -15,5 +15,7 @@ namespace ShortUrl.Entities
         public string longUrl { get; set; }
         [Column("short_url")]
         public string shortUrl { get; set; }
+        [Column("revoke_pwd")]
+        public string revokePassword { get; set; }
     }
 }
