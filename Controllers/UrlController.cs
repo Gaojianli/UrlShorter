@@ -86,7 +86,7 @@ namespace ShortUrl.Controllers
                 Response.StatusCode = 204;
                 return new JsonResult(new
                 {
-                    code = 204,
+                    code = 201,
                     msg = "Deleted"
                 });
             }
@@ -100,7 +100,7 @@ namespace ShortUrl.Controllers
                     Response.StatusCode = 204;
                     return new JsonResult(new
                     {
-                        code = 204,
+                        code = 201,
                         msg = "Deleted"
                     }) ;
                 }
