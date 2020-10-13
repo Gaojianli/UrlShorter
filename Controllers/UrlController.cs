@@ -83,7 +83,7 @@ namespace ShortUrl.Controllers
                           select urls;
             if (query.Count() == 0)
             {
-                Response.StatusCode = 204;
+                Response.StatusCode = 201;
                 return new JsonResult(new
                 {
                     code = 201,
@@ -97,7 +97,7 @@ namespace ShortUrl.Controllers
                 {
                     dbContext.Urls.Remove(target);
                     await dbContext.SaveChangesAsync();
-                    Response.StatusCode = 204;
+                    Response.StatusCode = 201;
                     return new JsonResult(new
                     {
                         code = 201,
