@@ -13,15 +13,21 @@ namespace ShortUrl.Controllers
 {
     [Route("/")]
     [ApiController]
-    public class UrlController: ControllerBase
+    public class UrlController : ControllerBase
     {
         private IConfiguration Configuration;
         public UrlController(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+        [HttpGet]
+        public void Get()
+        {
+            Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"]);
+        }
+
         [HttpGet("{shorten}")]
-        public void Get(string shorten, [FromServices] UrlContext dbContext)
+        public void Forward(string shorten, [FromServices] UrlContext dbContext)
         {
             var longUrl = from urls in dbContext.Urls
                           where urls.shortUrl == shorten
@@ -76,11 +82,11 @@ namespace ShortUrl.Controllers
         }
 
         [HttpDelete("{shorten}")]
-        public async Task<IActionResult> Delete(string shorten,[FromQuery] string revokePwd, [FromServices] UrlContext dbContext)
+        public async Task<IActionResult> Delete(string shorten, [FromQuery] string revokePwd, [FromServices] UrlContext dbContext)
         {
             var query = from urls in dbContext.Urls
-                          where urls.shortUrl == shorten
-                          select urls;
+                        where urls.shortUrl == shorten
+                        select urls;
             if (query.Count() == 0)
             {
                 Response.StatusCode = 201;
@@ -102,7 +108,7 @@ namespace ShortUrl.Controllers
                     {
                         code = 201,
                         msg = "Deleted"
-                    }) ;
+                    });
                 }
                 else
                 {
