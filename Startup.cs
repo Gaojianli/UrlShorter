@@ -26,6 +26,7 @@ namespace ShortUrl
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
             services.AddDbContext<UrlContext>(options => options.UseMySQL(Configuration.GetConnectionString("SqlConnection")));
             services.AddSingleton(Configuration);
@@ -38,6 +39,9 @@ namespace ShortUrl
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.AllowAnyMethod()
+                       .AllowAnyHeader().WithOrigins(new string[] { Configuration.GetSection("SiteSettings")["origin"] }));
 
             app.UseRouting();
 
