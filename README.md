@@ -9,13 +9,13 @@
 > ShortURL is a open source URL shortening service (a.k.a URL redirection) allowing anyone to take any existing URL and shorten it.
 
 
-### ✨ [Demo](https://short.u2b.eu)
-
+### ✨ Demo: https://short.u2b.eu
+### Webui: https://github.com/Gaojianli/UrlShorter-web
 ## Config
 |Name|Type|Details|
 |:-|:-|:-|
 |SqlConnection|string|The [connection string](https://www.connectionstrings.com/) of the database|
-|origin|string|The origin of the web ui, usually is just the URL of the web.|
+|origin|string|The origin of the web ui, usually is just the URL of the web. If you set this uncorrectly, you may meet CORS error.|
 |homePage|string|The URL of the web, if one short url is missing, the user will be redirected here.|
 |prefix|string|The prefix of each short url.|
 
