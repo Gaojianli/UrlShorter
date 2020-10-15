@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> ShortURL is a opensource URL shortening service (a.k.a URL redirection) allowing anyone to take any existing URL and shorten it.
+> ShortURL is a open source URL shortening service (a.k.a URL redirection) allowing anyone to take any existing URL and shorten it.
 
 
 ### ✨ [Demo](https://short.u2b.eu)
