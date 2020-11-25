@@ -9,9 +9,14 @@
 > ShortURL is a open source URL shortening service (a.k.a URL redirection) allowing anyone to take any existing URL and shorten it.
 
 
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter?ref=badge_large)
+
 ### ✨ Demo: https://short.u2b.eu
 ### Webui: https://github.com/Gaojianli/UrlShorter-web
 ## Config
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter?ref=badge_shield)
+
 |Name|Type|Details|
 |:-|:-|:-|
 |SqlConnection|string|The [connection string](https://www.connectionstrings.com/) of the database|
