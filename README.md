@@ -4,14 +4,17 @@
   <a href="https://github.com/Gaojianli/UrlShorter/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter?ref=badge_shield" target="_blank">
+    <img alt="FOSSA: Scan" src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter.svg?type=shield">
+  </a>
 </p>
 
 > ShortURL is a open source URL shortening service (a.k.a URL redirection) allowing anyone to take any existing URL and shorten it.
 
-
 ### ✨ Demo: https://short.u2b.eu
 ### Webui: https://github.com/Gaojianli/UrlShorter-web
 ## Config
+
 |Name|Type|Details|
 |:-|:-|:-|
 |SqlConnection|string|The [connection string](https://www.connectionstrings.com/) of the database|
@@ -77,6 +80,8 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2020 [Gaojianli](https://github.com/Gaojianli).<br />
 This project is [MIT](https://github.com/Gaojianli/UrlShorter/blob/master/LICENSE) licensed.
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter?ref=badge_large)
+
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

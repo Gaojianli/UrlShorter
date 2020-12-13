@@ -46,7 +46,7 @@ namespace ShortUrl.Controllers
         public async Task<IActionResult> PUT([FromServices] UrlContext dbContext)
         {
             var body = Request.Form;
-            if (body.ContainsKey("urls"))
+            if (body != null || body.ContainsKey("urls"))
             {
                 var newUrls = new Url
                 {
