@@ -23,7 +23,7 @@ namespace ShortUrl.Controllers
         [HttpGet]
         public void Get()
         {
-            Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"],true);
+            Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"], true);
         }
 
         [HttpGet("{shorten}")]
@@ -34,11 +34,11 @@ namespace ShortUrl.Controllers
                           select urls.longUrl;
             if (longUrl.Count() == 0)
             {
-                Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"]);
+                Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"], true);
             }
             else
             {
-                Response.Redirect(longUrl.Single(),true);
+                Response.Redirect(longUrl.Single(), true);
             }
         }
 
