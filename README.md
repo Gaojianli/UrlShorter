@@ -96,6 +96,7 @@ Give a ⭐️ if this project helped you!
 
 Copyright © 2020 [Gaojianli](https://github.com/Gaojianli).<br />
 This project is [MIT](https://github.com/Gaojianli/UrlShorter/blob/master/LICENSE) licensed.
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FGaojianli%2FUrlShorter?ref=badge_large)
 
 
