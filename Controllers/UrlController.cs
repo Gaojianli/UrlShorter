@@ -23,7 +23,7 @@ namespace ShortUrl.Controllers
         [HttpGet]
         public void Get()
         {
-            Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"]);
+            Response.Redirect(Configuration.GetSection("SiteSettings")["homePage"],true);
         }
 
         [HttpGet("{shorten}")]
