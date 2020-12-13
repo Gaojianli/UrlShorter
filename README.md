@@ -52,6 +52,22 @@ Here're the config running on https://short.u2b.eu:
 ```
 
 ## Install
+### Docker(Recommended)
+1. Import the `init.sql` into your Mysql/Mariadb
+1. Run the container
+```bash
+docker run -d -e ConnectionStrings__SqlConnection="server=<ip to the db>;port=<db port>;database=shortUrl;uid=shorturl;pwd=<pwd>;CharSet=utf8" \
+-e SiteSettings__origin="https://short.u2b.eu" \
+-e SiteSettings__homePage="https://short.u2b.eu" \
+-e SiteSettings__prefix="https://u2b.eu" \
+-p 5000:5000 \
+--name url_shorter \
+--restart=always \
+url_shorter
+```
+
+
+### Manually
 1. Import the `init.sql` into your Mysql/Mariadb
 1. Edit your database config in `appsettings.json`, then run:
 
