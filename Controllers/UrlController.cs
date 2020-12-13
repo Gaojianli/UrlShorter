@@ -38,7 +38,7 @@ namespace ShortUrl.Controllers
             }
             else
             {
-                Response.Redirect(longUrl.Single());
+                Response.Redirect(longUrl.Single(),true);
             }
         }
 
