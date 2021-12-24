@@ -38,7 +38,7 @@ namespace ShortUrl.Controllers
             }
             else
             {
-                Response.Redirect(longUrl.Single(), true);
+                Response.Redirect(Flurl.Url.EncodeIllegalCharacters(longUrl.Single()), true);
             }
         }
 
