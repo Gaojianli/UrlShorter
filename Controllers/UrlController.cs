@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Org.BouncyCastle.Math.EC;
 using ShortUrl.DataAccess;
 using ShortUrl.Entities;
 

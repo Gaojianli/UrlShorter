@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace ShortUrl.Service
 {
@@ -28,25 +29,16 @@ namespace ShortUrl.Service
 
         }
 
-        private static int getNewSeed()
-        {
-            byte[] rndBytes = new byte[4];
-            System.Security.Cryptography.RNGCryptoServiceProvider rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            rng.GetBytes(rndBytes);
-            return BitConverter.ToInt32(rndBytes, 0);
-        }
         static public string GenerateRevokePwd()
         {
-            string s = "123456789abcdefghijklmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ";
-            string reValue = string.Empty;
-            Random rnd = new Random(getNewSeed());
-            while (reValue.Length < RevokePwdLength)
+            var randomNumber = new byte[32];
+            string refreshToken = "";
+            using (var rng = RandomNumberGenerator.Create())
             {
-                string s1 = s[rnd.Next(0, s.Length)].ToString();
-                if (reValue.IndexOf(s1) == -1) reValue += s1;
+                rng.GetBytes(randomNumber);
+                refreshToken = Convert.ToBase64String(randomNumber);
             }
-            return reValue;
-
+            return refreshToken.Substring(RevokePwdLength);
         }
     }
 }
