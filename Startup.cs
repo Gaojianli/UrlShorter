@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using ShortUrl.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace ShortUrl
 {
@@ -28,7 +22,7 @@ namespace ShortUrl
         {
             services.AddCors();
             services.AddControllers();
-            services.AddDbContext<UrlContext>(options => options.UseMySQL(Configuration.GetConnectionString("SqlConnection")));
+            services.AddDbContext<UrlContext>(options => options.UseMySql(Configuration.GetConnectionString("SqlConnection"), ServerVersion.AutoDetect(Configuration.GetConnectionString("SqlConnection"))));
             services.AddSingleton(Configuration);
         }
 

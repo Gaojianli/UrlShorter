@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 namespace ShortUrl.Service
@@ -11,7 +10,7 @@ namespace ShortUrl.Service
     {
         private static int RevokePwdLength = 8;
         public static char[] alphaBet = { 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M' };
-        public static string getShorted(long id)
+        public static string GetShorted(long id)
         {
             var rest = id;
             Stack<char> stack = new Stack<char>();
@@ -38,7 +37,7 @@ namespace ShortUrl.Service
                 rng.GetBytes(randomNumber);
                 refreshToken = Convert.ToBase64String(randomNumber);
             }
-            return refreshToken.Substring(RevokePwdLength);
+            return refreshToken.Substring(0,RevokePwdLength);
         }
     }
 }

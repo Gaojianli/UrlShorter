@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using ShortUrl.DataAccess;
@@ -53,7 +50,7 @@ namespace ShortUrl.Controllers
                 };
                 dbContext.Urls.Add(newUrls);
                 await dbContext.SaveChangesAsync();
-                newUrls.shortUrl = Service.ShortUrl.getShorted(newUrls.id);
+                newUrls.shortUrl = Service.ShortUrl.GetShorted(newUrls.id);
                 newUrls.revokePassword = Service.ShortUrl.GenerateRevokePwd();
                 await dbContext.SaveChangesAsync();
                 Response.StatusCode = 201;
